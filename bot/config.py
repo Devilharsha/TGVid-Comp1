@@ -9,9 +9,9 @@ try:
     BOT_TOKEN = config("BOT_TOKEN")
     DEV = 5211097098
     OWNER = config("OWNER")
-    ffmpegcode = ["-preset fast -c:v libx265 -s 1280:-2 -x265-params 'bframes=8:psy-rd=1:ref=3:aq-mode=3:aq-strength=0.8:deblock=1,1' -metadata 'title=Encoded By Shirou' -pix_fmt yuv420p -crf 24 -c:a libopus -b:a 128k -vbr on -c:s copy -map 0 threads 1"]
-    THUMBNAIL = config("THUMBNAIL", default="https://telegra.ph/file/ebde50b591e0e6c19366c.png")
+    ffmpegcode = ["-hide_banner -c:v libx265 -vf scale=1280:-2 -x265-params log-level=error:limit-sao:psy-rd=1.5:psy-rdoq=2:aq-mode=3:qcomp=0.75:ref=6:deblock=-1,-1 -pix_fmt yuv420p10 -metadata title="t.me/Somnolin" -preset medium -crf 23 -r 23.976 -map 0:v -c:a libopus -b:a 128k -cutoff 20000 -vbr on -map 0:a -c:s copy -map 0:s?"]
+    THUMBNAIL = config("THUMBNAIL")
 except Exception as e:
-    print("Environment vars Missing! Exiting App.")
+    print("Environment vars Missing! Try again!")
     print(str(e))
     exit(1)
